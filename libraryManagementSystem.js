@@ -53,3 +53,32 @@ class Section {
 }
 
 
+// Task 3: Create a Patron class
+// The Patron class represents a library user who can borrow and return books.
+class Patron {
+    constructor(name) {
+        this.name = name; // The name of the patron
+        this.borrowedBooks = []; // Array to store borrowed books
+    }
+
+    // Method to borrow a book
+    borrowBook(book) {
+        if (book.isAvailableStatus) {
+            this.borrowedBooks.push(book);
+            book.isAvailableStatus = false;
+        } else {
+            console.log(`${book.title} is currently unavailable.`);
+        }
+    }
+
+    // Method to return a borrowed book
+    returnBook(book) {
+        const index = this.borrowedBooks.indexOf(book);
+        if (index !== -1) {
+            this.borrowedBooks.splice(index, 1);
+            book.isAvailableStatus = true;
+        }
+    }
+}
+
+
