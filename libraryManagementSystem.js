@@ -24,4 +24,32 @@ class Book {
     }
 }
 
+// Task 2: Create a Section class
+// The Section class represents a section in the library that contains multiple books.
+class Section {
+    constructor(name) {
+        this.name = name; // The name of the section (e.g., Fiction, Science)
+        this.books = []; // Array to store Book objects in this section
+    }
+
+    // Method to add a book to the section
+    addBook(book) {
+        this.books.push(book);
+    }
+
+    // Method to return the total number of available books in the section
+    getAvailableBooks() {
+        return this.books.filter(book => book.isAvailableStatus).length;
+    }
+
+    // Method to list all books in the section
+    listBooks() {
+        return this.books.map(book => ({
+            title: book.title,
+            author: book.author,
+            isAvailable: book.isAvailableStatus
+        }));
+    }
+}
+
 
