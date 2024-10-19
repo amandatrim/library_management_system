@@ -96,3 +96,10 @@ class VIPPatron extends Patron {
     }
 }
 
+
+// Task 5: Handle Books Borrowing and Returning
+// Adding a method to the Section class to calculate total available books in the section.
+Section.prototype.calculateTotalBooksAvailable = function() {
+    return this.books.reduce((total, book) => total + (book.isAvailableStatus ? 1 : 0), 0);
+};
+
