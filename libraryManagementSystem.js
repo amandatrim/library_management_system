@@ -103,3 +103,32 @@ Section.prototype.calculateTotalBooksAvailable = function() {
     return this.books.reduce((total, book) => total + (book.isAvailableStatus ? 1 : 0), 0);
 };
 
+
+// Task 6: Create and manage library sections and patrons
+// Creating a new library structure with two sections, multiple books, and patrons.
+const fictionSection = new Section("Fiction");
+const scienceSection = new Section("Science");
+
+// Adding books to the Fiction section
+fictionSection.addBook(new Book("1984", "George Orwell", "123456789"));
+fictionSection.addBook(new Book("To Kill a Mockingbird", "Harper Lee", "987654321"));
+
+// Adding books to the Science section
+scienceSection.addBook(new Book("A Brief History of Time", "Stephen Hawking", "1122334455"));
+scienceSection.addBook(new Book("The Selfish Gene", "Richard Dawkins", "5544332211"));
+
+// Creating patrons
+const regularPatron = new Patron("Alice");
+const vipPatron = new VIPPatron("Bob");
+
+// Regular patron borrowing a book
+regularPatron.borrowBook(fictionSection.books[0]); // Borrowing "1984"
+
+// VIP patron borrowing a book
+vipPatron.borrowBook(scienceSection.books[0]); // Borrowing "A Brief History of Time"
+
+// Displaying available books after borrowing
+console.log(`Available books in Fiction section: ${fictionSection.calculateTotalBooksAvailable()}`);
+console.log(`Available books in Science section: ${scienceSection.calculateTotalBooksAvailable()}`);
+
+
